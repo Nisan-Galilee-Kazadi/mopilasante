@@ -10,6 +10,12 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       .hero-overlay {
         background: linear-gradient(
@@ -54,13 +60,13 @@
     <!-- Navbar -->
     <nav
       id="navbar"
-      class="w-full fixed top-0 left-0 bg-transparent transition-colors duration-300 shadow z-50 flex items-center justify-between px-4 py-2 md:px-8"
+      class="w-full fixed top-0 left-0 bg-transparent transition-colors duration-300 shadow z-50 flex items-center justify-between px-4 py-3 md:px-8"
     >
       <div class="flex items-center gap-2">
         <img
           src="images/union.jpg"
           alt="Logo MopilaSanté"
-          class="h-10 w-10 rounded-full bg-blue-100 object-cover"
+          class="h-14 w-14 rounded-full bg-blue-100 object-cover border-2 border-blur-600"
         />
         <span class="font-bold text-lg text-blue-700 tracking-wide"
           >MopilaSanté</span
@@ -69,23 +75,58 @@
       <!-- Desktop menu -->
       <ul class="hidden md:flex gap-4 font-semibold">
         <li>
-          <a href="#accueil" class="hover:text-blue-600 nav-link">Accueil</a>
+          <a
+            href="#accueil"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
+            >Accueil</a
+          >
         </li>
         <li>
-          <a href="#apropos" class="hover:text-blue-600 nav-link">À propos</a>
+          <a
+            href="#apropos"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
+            >À propos</a
+          >
         </li>
         <li>
-          <a href="#stats" class="hover:text-blue-600 nav-link">Statistiques</a>
+          <a
+            href="#valeurs"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
+            >Nos valeurs</a
+          >
         </li>
         <li>
-          <a href="#partenaires" class="hover:text-blue-600 nav-link"
+          <a
+            href="#stats"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
+            >Statistiques</a
+          >
+        </li>
+        <li>
+          <a
+            href="#partenaires"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
             >Partenaires</a
           >
         </li>
         <li>
           <a
+            href="#temoignages"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
+            >Témoignages</a
+          >
+        </li>
+        <li>
+          <a
+            href="#fonctionnement"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600"
+            >Comment ça marche</a
+          >
+        </li>
+        <li>
+          <a
             href="#contact"
-            class="text-blue-600 font-bold nav-link hover:underline"
+            class="nav-link nav-desktop-link text-white hover:text-blue-600 font-bold hover:underline"
             >Contact</a
           >
         </li>
@@ -93,26 +134,24 @@
       <div class="flex items-center gap-2 w-32 justify-center md:w-auto">
         <!-- Connexion CTA toujours visible et centré sur mobile -->
         <button
-          onclick="location.href='#login'"
-          class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition md:inline-block flex-1 text-center"
+          onclick="location.href='login.html'"
+          class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition md:inline-block flex-1 text-center mr-2"
         >
           Connexion
         </button>
         <!-- Hamburger button for mobile -->
         <button
           id="menu-btn"
-          class="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none ml-2"
+          class="md:hidden flex justify-center items-center w-10 h-10 focus:outline-none ml-2 pr-8 text-2xl"
           aria-label="Ouvrir le menu"
         >
-          <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-          <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-          <span class="block w-6 h-0.5 bg-blue-700"></span>
+          <i class="fa-solid fa-bars text-blue-700"></i>
         </button>
       </div>
       <!-- Mobile menu -->
       <div
         id="mobile-menu"
-        class="fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center gap-8 text-xl font-semibold hidden md:hidden rounded-b-3xl shadow-2xl animate-slide-down overflow-hidden"
+        class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900 via-green-400 to-blue-700 z-50 flex flex-col items-center justify-center gap-8 text-xl font-semibold hidden md:hidden rounded-b-3xl shadow-2xl animate-slide-down overflow-hidden"
       >
         <div
           class="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -120,27 +159,43 @@
           <img
             src="images/union.jpg"
             alt="Logo filigrane"
-            class="w-48 h-48 opacity-10 object-contain"
+            class="w-52 h-52 opacity-10 object-contain"
           />
         </div>
         <button
           id="close-menu"
-          class="absolute top-4 right-6 text-3xl text-blue-700"
+          class="absolute top-4 right-6 text-3xl text-white"
+          aria-label="Fermer le menu"
         >
-          &times;
+          <i class="fa-solid fa-xmark fa-1x"></i>
         </button>
-        <a href="#accueil" class="nav-link relative z-10">Accueil</a>
-        <a href="#apropos" class="nav-link relative z-10">À propos</a>
-        <a href="#stats" class="nav-link relative z-10">Statistiques</a>
-        <a href="#partenaires" class="nav-link relative z-10">Partenaires</a>
-        <a
-          href="#contact"
-          class="nav-link relative z-10 text-blue-600 font-bold hover:underline"
+
+        <!-- toutt les li doivent avoir la couleur bleu -->
+        <a href="#accueil" class="nav-link relative z-10 text-white">Accueil</a>
+        <a href="#apropos" class="nav-link relative z-10 text-white"
+          >À propos</a
+        >
+        <a href="#valeurs" class="nav-link relative z-10 text-white"
+          >Nos valeurs</a
+        >
+        <a href="#stats" class="nav-link relative z-10 text-white"
+          >Statistiques</a
+        >
+        <a href="#partenaires" class="nav-link relative z-10 text-white"
+          >Partenaires</a
+        >
+        <a href="#temoignages" class="nav-link relative z-10 text-white"
+          >Témoignages</a
+        >
+        <a href="#fonctionnement" class="nav-link relative z-10 text-white"
+          >Comment ça marche</a
+        >
+        <a href="#contact" class="nav-link relative z-10 text-white font-bold"
           >Contact</a
         >
         <button
-          onclick="location.href='#login'"
-          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition relative z-10"
+          onclick="location.href='login.html'"
+          class="border-2 border-white text-white px-4 py-2 rounded hover:bg-white hover:text-blue-700 transition relative z-10"
         >
           Connexion
         </button>
@@ -181,31 +236,180 @@
         id="apropos"
         class="py-12 px-4 bg-white flex flex-col items-center pt-20 md:pt-24"
       >
-        <h2 class="text-2xl font-bold text-blue-700 mb-4">À propos</h2>
-        <div class="max-w-2xl text-gray-700 space-y-3">
-          <p>
-            <strong>MopilaSanté</strong> est une solution numérique pour
-            accompagner les chauffeurs indépendants de Kinshasa, en leur offrant
-            un accès simplifié et structuré aux soins médicaux.
-          </p>
-          <p>
-            Chaque membre contribue régulièrement à une caisse commune, utilisée
-            pour la couverture partielle ou complète de soins médicaux dans des
-            centres partenaires.
-          </p>
-          <ul class="list-disc list-inside mt-2">
-            <li>
-              <strong>Solidarité</strong> : Unir les chauffeurs pour leur santé.
-            </li>
-            <li>
-              <strong>Transparence</strong> : Suivi clair des cotisations et des
-              soins.
-            </li>
-            <li>
-              <strong>Communauté</strong> : Un projet par et pour les
-              conducteurs.
-            </li>
-          </ul>
+        <h2
+          class="text-3xl md:text-4xl font-extrabold text-blue-800 mb-8 text-center"
+        >
+          À propos de <span class="text-green-500">MopilaSanté</span>
+        </h2>
+        <div
+          class="max-w-5xl w-full flex flex-col md:flex-row items-center gap-8 bg-gray-50 rounded-xl shadow-lg p-6 md:p-10"
+        >
+          <img
+            src="images/solidarit.jpg"
+            alt="Solidarité MopilaSanté"
+            class="w-full md:w-1/2 rounded-lg shadow-md object-cover max-h-80 mb-6 md:mb-0"
+          />
+          <div class="flex-1 text-gray-700 space-y-4">
+            <p class="text-lg md:text-xl font-semibold text-blue-700">
+              MopilaSanté, c'est la force de la solidarité pour la santé des
+              chauffeurs indépendants de Kinshasa.
+            </p>
+            <p>
+              Chaque membre contribue à une
+              <span class="font-bold text-green-600">caisse commune</span> pour
+              garantir l'accès aux soins médicaux dans des centres partenaires.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+              <div class="flex items-center gap-3">
+                <svg
+                  class="w-8 h-8 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 0V4m0 0C7.582 4 4 7.582 4 12c0 4.418 3.582 8 8 8s8-3.582 8-8c0-4.418-3.582-8-8-8z"
+                  />
+                </svg>
+                <span
+                  ><span class="font-bold">Solidarité</span> : Unir les
+                  chauffeurs pour leur santé</span
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <svg
+                  class="w-8 h-8 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z"
+                  />
+                </svg>
+                <span
+                  ><span class="font-bold">Transparence</span> : Suivi clair des
+                  cotisations et des soins</span
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <svg
+                  class="w-8 h-8 text-yellow-500"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9-4V9a4 4 0 00-3-3.87M9 4V3a4 4 0 013-3.87"
+                  />
+                </svg>
+                <span
+                  ><span class="font-bold">Communauté</span> : Un projet par et
+                  pour les conducteurs</span
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <svg
+                  class="w-8 h-8 text-purple-500"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 0V4m0 0C7.582 4 4 7.582 4 12c0 4.418 3.582 8 8 8s8-3.582 8-8c0-4.418-3.582-8-8-8z"
+                  />
+                </svg>
+                <span
+                  ><span class="font-bold">Simplicité</span> : Adhésion et
+                  gestion faciles</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nos valeurs -->
+      <section
+        id="valeurs"
+        class="py-12 px-4 bg-gradient-to-b from-blue-50 to-white flex flex-col items-center"
+      >
+        <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mb-8">
+          Nos valeurs fondamentales
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl w-full">
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/solidarit.jpg"
+              alt="Solidarité"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-green-600 mb-2"
+              >Solidarité</span
+            >
+            <p class="text-gray-600 text-center">
+              Unir les chauffeurs pour leur santé et leur avenir.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/caissse commune.jpg"
+              alt="Transparence"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-blue-600 mb-2"
+              >Transparence</span
+            >
+            <p class="text-gray-600 text-center">
+              Suivi clair des cotisations et des soins pour tous.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/l'unite1.jpg"
+              alt="Communauté"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-yellow-600 mb-2"
+              >Communauté</span
+            >
+            <p class="text-gray-600 text-center">
+              Un projet par et pour les conducteurs de Kinshasa.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/finance.jpg"
+              alt="Simplicité"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-purple-600 mb-2"
+              >Simplicité</span
+            >
+            <p class="text-gray-600 text-center">
+              Adhésion et gestion faciles, accessibles à tous.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -217,39 +421,104 @@
         <h2 class="text-2xl font-bold text-blue-700 mb-6">Statistiques</h2>
         <div class="flex flex-wrap gap-8 justify-center">
           <div
-            class="bg-white rounded shadow p-6 w-40 text-center flex flex-col items-center"
+            class="bg-white rounded-xl shadow-lg p-8 w-full max-w-xs md:w-80 md:min-w-[300px] text-center flex flex-col items-center transform transition hover:scale-105 hover:shadow-2xl"
           >
             <img
-              src="/img/membres.png"
+              src="images/Registered nurses are essential in bridging….jpg"
               alt="Membres inscrits"
-              class="h-10 w-10 mb-2"
+              class="h-24 w-24 mb-4 rounded-full object-cover shadow"
             />
-            <div class="text-3xl font-bold text-blue-600">+1200</div>
-            <div class="text-gray-600">Membres inscrits</div>
+            <div class="text-4xl font-extrabold text-blue-600">+1200</div>
+            <div class="text-gray-600 font-semibold">Membres inscrits</div>
           </div>
           <div
-            class="bg-white rounded shadow p-6 w-40 text-center flex flex-col items-center"
+            class="bg-white rounded-xl shadow-lg p-8 w-full max-w-xs md:w-80 md:min-w-[300px] text-center flex flex-col items-center transform transition hover:scale-105 hover:shadow-2xl"
           >
             <img
-              src="/img/hopitaux.png"
+              src="images/Hopital Cinquantenaire.jpeg"
               alt="Hôpitaux partenaires"
-              class="h-10 w-10 mb-2"
+              class="h-24 w-24 mb-4 rounded-full object-cover shadow"
             />
-            <div class="text-3xl font-bold text-blue-600">8</div>
-            <div class="text-gray-600">Hôpitaux partenaires</div>
+            <div class="text-4xl font-extrabold text-blue-600">8</div>
+            <div class="text-gray-600 font-semibold">Hôpitaux partenaires</div>
           </div>
           <div
-            class="bg-white rounded shadow p-6 w-40 text-center flex flex-col items-center"
+            class="bg-white rounded-xl shadow-lg p-8 w-full max-w-xs md:w-80 md:min-w-[300px] text-center flex flex-col items-center transform transition hover:scale-105 hover:shadow-2xl"
           >
             <img
-              src="/img/bons.png"
+              src="images/consultation.jpg"
               alt="Bons de soins délivrés"
-              class="h-10 w-10 mb-2"
+              class="h-24 w-24 mb-4 rounded-full object-cover shadow"
             />
-            <div class="text-3xl font-bold text-blue-600">+350</div>
-            <div class="text-gray-600">Bons de soins délivrés</div>
+            <div class="text-4xl font-extrabold text-blue-600">+350</div>
+            <div class="text-gray-600 font-semibold">
+              Bons de soins délivrés
+            </div>
           </div>
         </div>
+      </section>
+
+      <!-- Témoignages -->
+      <section
+        id="temoignages"
+        class="py-16 px-4 bg-white flex flex-col items-center"
+      >
+        <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mb-8">
+          Ils témoignent
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+          <div
+            class="bg-blue-50 rounded-xl shadow p-8 flex flex-col items-center w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/solidarit.jpg"
+              alt="Contact MopilaSanté"
+              class="w-full h-40 object-cover rounded-t-2xl shadow mb-4"
+            />
+            <p class="italic text-gray-700 mb-2">
+              « Grâce à MopilaSanté, j'ai pu me soigner rapidement sans me
+              soucier des frais. La solidarité entre chauffeurs, c'est du
+              concret ! »
+            </p>
+            <span class="font-bold text-blue-700"
+              >Amina, conductrice indépendante</span
+            >
+          </div>
+          <div
+            class="bg-blue-50 rounded-xl shadow p-8 flex flex-col items-center w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/medecinhomme.jpg"
+              alt="Témoignage 2"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <p class="italic text-gray-700 mb-2">
+              « Le suivi des cotisations est simple et transparent. Je
+              recommande MopilaSanté à tous mes collègues ! »
+            </p>
+            <span class="font-bold text-blue-700">Jean, chauffeur de taxi</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bandeau CTA final -->
+      <section
+        class="py-12 px-4 bg-gradient-to-r from-blue-700 to-green-400 flex flex-col items-center justify-center text-center"
+      >
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">
+          Rejoignez la communauté MopilaSanté !
+        </h2>
+        <p class="text-white text-lg mb-6 max-w-2xl">
+          Protégez votre santé et celle de vos proches grâce à la solidarité.
+          Inscrivez-vous dès aujourd'hui et bénéficiez d'un accompagnement
+          sur-mesure.
+        </p>
+        <button
+          onclick="location.href='#contact'"
+          class="px-8 py-4 bg-white text-blue-700 font-bold rounded-lg shadow-lg hover:bg-blue-100 transition text-lg"
+        >
+          Je veux adhérer
+        </button>
       </section>
 
       <!-- Partenaires -->
@@ -259,31 +528,39 @@
       >
         <h2 class="text-2xl font-bold text-blue-700 mb-6">Nos partenaires</h2>
         <div class="flex flex-wrap gap-8 justify-center items-center">
-          <div class="flex flex-col items-center">
+          <div
+            class="flex flex-col items-center bg-blue-50 rounded-xl shadow-lg p-8 w-full max-w-xs md:w-80"
+          >
             <img
-              src="/img/hopital1.png"
-              alt="Hôpital A"
-              class="h-16 w-16 object-contain mb-2"
+              src="images/024032014172652000000Hopital-cinquantenaire-RDC_dr.avif"
+              alt="Hôpital Cinquantenaire"
+              class="h-28 w-28 object-cover rounded-full mb-4 shadow"
             />
-            <span class="font-semibold">Hôpital A</span>
+            <span class="font-semibold text-blue-800"
+              >Hôpital Cinquantenaire</span
+            >
             <span class="text-xs text-gray-500">Gombe</span>
           </div>
-          <div class="flex flex-col items-center">
+          <div
+            class="flex flex-col items-center bg-blue-50 rounded-xl shadow-lg p-8 w-full max-w-xs md:w-80"
+          >
             <img
-              src="/img/hopital2.png"
-              alt="Hôpital B"
-              class="h-16 w-16 object-contain mb-2"
+              src="images/Hopital Cinquantenaire.jpeg"
+              alt="Hôpital Général"
+              class="h-28 w-28 object-cover rounded-full mb-4 shadow"
             />
-            <span class="font-semibold">Hôpital B</span>
+            <span class="font-semibold text-blue-800">Hôpital Général</span>
             <span class="text-xs text-gray-500">Limete</span>
           </div>
-          <div class="flex flex-col items-center">
+          <div
+            class="flex flex-col items-center bg-blue-50 rounded-xl shadow-lg p-8 w-full max-w-xs md:w-80"
+          >
             <img
-              src="/img/hopital3.png"
-              alt="Hôpital C"
-              class="h-16 w-16 object-contain mb-2"
+              src="images/couloir2.jpg"
+              alt="Hôpital de Matete"
+              class="h-28 w-28 object-cover rounded-full mb-4 shadow"
             />
-            <span class="font-semibold">Hôpital C</span>
+            <span class="font-semibold text-blue-800">Hôpital de Matete</span>
             <span class="text-xs text-gray-500">Matete</span>
           </div>
         </div>
@@ -292,128 +569,301 @@
       <!-- Contact -->
       <section
         id="contact"
-        class="py-12 px-4 bg-blue-50 flex flex-col items-center"
+        class="py-16 px-4 bg-blue-50 flex flex-col items-center"
       >
-        <h2 class="text-2xl font-bold text-blue-700 mb-4">Contact</h2>
-        <form
-          class="w-full max-w-md bg-white rounded shadow p-6 flex flex-col gap-4"
-          autocomplete="off"
+        <div
+          class="max-w-4xl w-full flex flex-col md:flex-row gap-10 items-stretch justify-center h-full min-h-[400px]"
         >
-          <input
-            type="text"
-            name="nom"
-            placeholder="Nom"
-            class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="tel"
-            name="telephone"
-            placeholder="Téléphone"
-            class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Votre message"
-            rows="3"
-            class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          ></textarea>
-          <button
-            type="submit"
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          <!-- Formulaire -->
+          <form
+            class="flex-1 min-w-[320px] h-full bg-white bg-opacity-90 rounded-3xl shadow-2xl p-8 flex flex-col gap-5 items-center relative"
+            autocomplete="off"
           >
-            Envoyer
-          </button>
-        </form>
-        <p class="text-sm text-gray-500 mt-4">
-          Ou contactez-nous au
-          <a href="tel:+243900000000" class="text-blue-700 underline"
-            >+243 900 000 000</a
+            <div
+              class="absolute -top-12 left-1/2 -translate-x-1/2 bg-blue-100 rounded-full p-4 shadow-lg"
+            >
+              <i class="fa-solid fa-envelope-open-text fa-2x text-blue-600"></i>
+            </div>
+            <h2
+              class="text-3xl font-extrabold text-blue-700 mb-2 mt-8 text-center"
+            >
+              Contactez-nous
+            </h2>
+            <div class="w-full flex flex-col gap-3">
+              <div class="relative">
+                <span
+                  class="absolute left-3 top-4 -translate-y-1/2 text-blue-400"
+                  ><i class="fa-solid fa-user"></i
+                ></span>
+                <input
+                  type="text"
+                  name="nom"
+                  placeholder="Nom"
+                  class="pl-10 border rounded-full px-3 py-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  required
+                />
+              </div>
+              <div class="relative">
+                <span
+                  class="absolute left-3 top-4 -translate-y-1/2 text-blue-400"
+                  ><i class="fa-solid fa-phone"></i
+                ></span>
+                <input
+                  type="tel"
+                  name="telephone"
+                  placeholder="Téléphone"
+                  class="pl-10 border rounded-full px-3 py-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  required
+                />
+              </div>
+              <div class="relative">
+                <span class="absolute left-3 top-4 text-blue-400"
+                  ><i class="fa-solid fa-message"></i
+                ></span>
+                <textarea
+                  name="message"
+                  placeholder="Votre message"
+                  rows="4"
+                  class="pl-10 border rounded-2xl px-3 py-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="w-full mt-2 bg-gradient-to-r from-blue-600 to-green-400 text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg flex items-center justify-center gap-2 hover:from-blue-700 hover:to-green-500 transition"
+            >
+              <i class="fa-solid fa-paper-plane"></i> Envoyer
+            </button>
+          </form>
+          <!-- Infos contact -->
+          <div
+            class="flex-1 min-w-[320px] h-full flex flex-col items-center md:items-start gap-6 bg-white bg-opacity-80 rounded-3xl shadow-xl p-8 mt-16 md:mt-0 justify-center"
           >
-        </p>
+            <h3
+              class="text-2xl font-bold text-blue-700 mb-2 text-center md:text-left"
+            >
+              Nos coordonnées
+            </h3>
+            <div class="flex items-center gap-3 text-blue-700">
+              <i class="fa-solid fa-phone-volume"></i>
+              <a href="tel:+243900000000" class="underline">+243 900 000 000</a>
+            </div>
+            <div class="flex items-center gap-3 text-blue-700">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:contact@mopilasanté.cd" class="underline"
+                >contact@mopilasanté.cd</a
+              >
+            </div>
+            <div class="flex items-center gap-3 text-blue-700">
+              <i class="fa-brands fa-whatsapp"></i>
+              <a href="https://wa.me/243900000000" class="underline"
+                >WhatsApp</a
+              >
+            </div>
+            <div class="flex items-center gap-3 text-blue-700">
+              <i class="fa-solid fa-location-dot"></i> Kinshasa, RDC
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comment ça marche -->
+      <section
+        id="fonctionnement"
+        class="py-16 px-4 bg-gradient-to-b from-white to-blue-50 flex flex-col items-center"
+      >
+        <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mb-8">
+          Comment ça marche ?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full">
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/union.jpg"
+              alt="Adhésion"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-blue-700 mb-2"
+              >1. J'adhère</span
+            >
+            <p class="text-gray-600 text-center">
+              Je rejoins MopilaSanté en quelques clics et je commence à cotiser.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/caissse commune.jpg"
+              alt="Cotisation"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-green-600 mb-2"
+              >2. Je cotise</span
+            >
+            <p class="text-gray-600 text-center">
+              Ma contribution alimente la caisse commune pour la santé de tous.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center bg-white rounded-xl shadow p-8 w-full max-w-xs md:w-80 md:min-w-[300px]"
+          >
+            <img
+              src="images/consultation.jpg"
+              alt="Soins"
+              class="w-24 h-24 rounded-full mb-4 object-cover shadow"
+            />
+            <span class="font-bold text-lg text-purple-700 mb-2"
+              >3. Je me soigne</span
+            >
+            <p class="text-gray-600 text-center">
+              En cas de besoin, j'accède facilement aux soins dans les hôpitaux
+              partenaires.
+            </p>
+          </div>
+        </div>
       </section>
 
       <!-- Footer -->
       <footer
-        class="bg-blue-900 text-white py-8 px-4 flex flex-col md:flex-row justify-between items-center gap-4"
+        class="w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white pt-10 pb-4 px-4 md:px-16"
       >
-        <div class="flex flex-col gap-1">
-          <span class="font-bold">MopilaSanté</span>
-          <span>Kinshasa, RDC</span>
-          <span>Email : contact@mopilasanté.cd</span>
+        <div
+          class="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-8"
+        >
+          <!-- Logo et contact -->
+          <div
+            class="flex-1 flex flex-col items-center md:items-start mb-6 md:mb-0"
+          >
+            <img
+              src="images/union.jpg"
+              alt="Logo MopilaSanté"
+              class="h-14 w-14 rounded-full bg-blue-100 object-cover mb-2 shadow"
+            />
+            <span class="font-bold text-xl text-green-400 mb-1"
+              >MopilaSanté</span
+            >
+            <span class="text-blue-100">Kinshasa, RDC</span>
+            <span class="text-blue-100">contact@mopilasanté.cd</span>
+            <span class="text-blue-100">+243 900 000 000</span>
+          </div>
+          <!-- Navigation -->
+          <div
+            class="flex-1 flex flex-col items-center text-center md:items-center mb-6 md:mb-0"
+          >
+            <span class="font-bold text-lg text-blue-200 mb-2">Navigation</span>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="#accueil"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Accueil</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#apropos"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  À propos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#valeurs"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Nos valeurs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#stats"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Statistiques</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#partenaires"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Partenaires</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#temoignages"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Témoignages</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#fonctionnement"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Comment ça marche</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-green-400 transition flex items-center justify-center gap-2"
+                >
+                  Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Réseaux sociaux -->
+          <div class="flex-1 flex flex-col items-center md:items-start">
+            <span class="font-bold text-lg text-blue-200 mb-2"
+              >Suivez-nous</span
+            >
+            <div class="flex gap-4 mt-2 justify-center">
+              <a
+                href="#"
+                class="bg-blue-700 hover:bg-green-400 hover:text-blue-900 transition rounded-full p-2"
+                ><i class="fab fa-x-twitter fa-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-blue-700 hover:bg-green-400 hover:text-blue-900 transition rounded-full p-2"
+                ><i class="fab fa-facebook-f fa-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-blue-700 hover:bg-green-400 hover:text-blue-900 transition rounded-full p-2"
+                ><i class="fab fa-whatsapp fa-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-blue-700 hover:bg-green-400 hover:text-blue-900 transition rounded-full p-2"
+                ><i class="fab fa-linkedin-in fa-lg"></i
+              ></a>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-4">
-          <a href="#" class="hover:text-blue-300">Facebook</a>
-          <a href="#" class="hover:text-blue-300">WhatsApp</a>
-          <a href="#" class="hover:text-blue-300">Twitter</a>
-        </div>
-        <div class="text-xs text-blue-200 mt-2 md:mt-0">
+        <div
+          class="border-t border-blue-800 mt-8 pt-4 text-center text-xs text-blue-200"
+        >
+          &copy; MopilaSanté <span id="footer-year">2024</span> par
+          <span class="font-bold text-blue-700"
+            ><a href="https://galileokazadidev.netlify.app"
+              >Nisan-Galilée Kazadi</a
+            ></span
+          >. Tous droits réservés. ·
           <a href="#" class="hover:underline">Mentions légales</a> ·
           <a href="#" class="hover:underline">Politique de confidentialité</a>
         </div>
       </footer>
     </main>
-
-    <script>
-      // Navbar background change on scroll
-      window.addEventListener("scroll", function () {
-        const navbar = document.getElementById("navbar");
-        if (window.scrollY > 40) {
-          navbar.classList.remove("bg-transparent");
-          navbar.classList.add("bg-white");
-        } else {
-          navbar.classList.add("bg-transparent");
-          navbar.classList.remove("bg-white");
-        }
-      });
-
-      // Mobile menu open/close
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const closeMenu = document.getElementById("close-menu");
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("animate-slide-down");
-        mobileMenu.classList.remove("animate-slide-up");
-      });
-      closeMenu.addEventListener("click", () => {
-        mobileMenu.classList.remove("animate-slide-down");
-        mobileMenu.classList.add("animate-slide-up");
-        setTimeout(() => {
-          mobileMenu.classList.add("hidden");
-          mobileMenu.classList.remove("animate-slide-up");
-        }, 500);
-      });
-
-      // Fermer le menu mobile au clic sur un lien
-      document.querySelectorAll("#mobile-menu .nav-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.remove("animate-slide-down");
-          mobileMenu.classList.add("animate-slide-up");
-          setTimeout(() => {
-            mobileMenu.classList.add("hidden");
-            mobileMenu.classList.remove("animate-slide-up");
-          }, 500);
-        });
-      });
-      // Scroll smooth pour tous les liens nav-link
-      document.querySelectorAll(".nav-link").forEach((link) => {
-        link.addEventListener("click", function (e) {
-          const href = this.getAttribute("href");
-          if (href && href.startsWith("#")) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              window.scrollTo({
-                top: target.offsetTop - 70,
-                behavior: "smooth",
-              });
-            }
-          }
-        });
-      });
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>

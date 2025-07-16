@@ -29,11 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Retirer les classes pour l'animation
     requestAnimationFrame(() => {
-      mobileMenu.classList.remove("translate-x-full");
-      mobileMenuContent.classList.remove("translate-x-full");
+      mobileMenu.classList.remove("-translate-x-full");
+      mobileMenuContent.classList.remove("-translate-x-full");
     });
 
     isMenuOpen = true;
+    // Attacher les handlers à chaque ouverture
+    const mobileNavBtns = mobileMenuContent.querySelectorAll("[data-tab]");
+    mobileNavBtns.forEach((btn) => {
+      btn.onclick = () => {
+        closeMenu();
+      };
+    });
   }
 
   // Fonction pour fermer le menu
@@ -41,8 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isMenuOpen) return;
 
     // Ajouter les classes pour l'animation
-    mobileMenu.classList.add("translate-x-full");
-    mobileMenuContent.classList.add("translate-x-full");
+    mobileMenu.classList.add("-translate-x-full");
+    mobileMenuContent.classList.add("-translate-x-full");
 
     // Attendre la fin de l'animation
     setTimeout(() => {
@@ -239,13 +246,41 @@ ${data.message ? `Message : ${data.message}` : ""}
       });
     }
   }
+
+  // Gestion du formulaire de paiement hors forfait
+  const horsforfaitForm = document.getElementById("horsforfait-paiement-form");
+  const horsforfaitSuccess = document.getElementById(
+    "horsforfait-paiement-success"
+  );
+  if (horsforfaitForm && horsforfaitSuccess) {
+    horsforfaitForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      horsforfaitSuccess.classList.remove("hidden");
+      setTimeout(() => {
+        horsforfaitSuccess.classList.add("hidden");
+        horsforfaitForm.reset();
+      }, 2500);
+    });
+  }
+
+  // Fermer le menu si on clique sur un lien ou un bouton de navigation dans le menu mobile
+  const mobileNavBtns = mobileMenuContent.querySelectorAll("[data-tab]");
+  mobileNavBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
 });
 
 window.onscroll = function () {
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return;
   changeNavbarTheme();
 };
 
 function changeNavbarTheme() {
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return;
   const navBar = document.getElementById("navBar");
   if (window.scrollY > 200) {
     navBar.classList.remove("bg-transparent");
@@ -285,4 +320,112 @@ function changeNavbarTheme() {
       item.classList.add("text-white");
     });
   }
+}
+
+// Navbar background change on scroll
+window.addEventListener("scroll", function () {
+  const navbar = document.getElementById("navbar");
+  if (window.scrollY > 40) {
+    navbar.classList.remove("bg-transparent");
+    navbar.classList.add("bg-white");
+  } else {
+    navbar.classList.add("bg-transparent");
+    navbar.classList.remove("bg-white");
+  }
+});
+
+// Mobile menu open/close
+const menuBtn = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+const closeMenu = document.getElementById("close-menu");
+if (menuBtn && mobileMenu && closeMenu) {
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.add("animate-slide-down");
+    mobileMenu.classList.remove("animate-slide-up");
+  });
+  closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.remove("animate-slide-down");
+    mobileMenu.classList.add("animate-slide-up");
+    setTimeout(() => {
+      mobileMenu.classList.add("hidden");
+      mobileMenu.classList.remove("animate-slide-up");
+    }, 500);
+  });
+  // Fermer le menu mobile au clic sur un lien
+  document.querySelectorAll("#mobile-menu .nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("animate-slide-down");
+      mobileMenu.classList.add("animate-slide-up");
+      setTimeout(() => {
+        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.remove("animate-slide-up");
+      }, 500);
+    });
+  });
+}
+// Scroll smooth pour tous les liens nav-link
+if (typeof window !== "undefined") {
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+  });
+}
+
+// Ajout dynamique de l'année dans le footer
+const yearSpan = document.getElementById("footer-year");
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
+
+// Inversion dynamique des couleurs des liens de la navbar desktop
+function updateNavbarLinkColors() {
+  const navbar = document.getElementById("navbar");
+  const links = document.querySelectorAll(".nav-desktop-link");
+  if (!navbar || !links.length) return;
+  if (navbar.classList.contains("bg-white")) {
+    links.forEach((link) => {
+      link.classList.remove("text-white", "hover:text-blue-600");
+      link.classList.add("text-blue-700", "hover:text-blue-400");
+    });
+  } else {
+    links.forEach((link) => {
+      link.classList.remove("text-blue-700", "hover:text-white");
+      link.classList.add("text-white", "hover:text-blue-600");
+    });
+  }
+}
+window.addEventListener("scroll", function () {
+  updateNavbarLinkColors();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  updateNavbarLinkColors();
+});
+
+function showTab(tab) {
+  tabContents.forEach((c) => c.classList.add("hidden"));
+  tabButtons.forEach((b) => b.classList.remove("tab-active"));
+  sidebarBtns.forEach((b) => b.classList.remove("active"));
+  document.getElementById("tab-" + tab).classList.remove("hidden");
+  // Scroll la barre d'onglets ou le header en haut
+  const tabsBar = document.getElementById("dashboard-tabs");
+  if (tabsBar && window.getComputedStyle(tabsBar).display !== "none") {
+    tabsBar.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    // Sur mobile, scroll le header
+    const header = document.querySelector("header");
+    if (header) header.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  // ... reste du code ...
 }

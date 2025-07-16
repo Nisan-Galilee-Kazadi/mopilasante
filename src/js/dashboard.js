@@ -22,8 +22,8 @@ function showTab(tab) {
   );
   if (sideBtn) sideBtn.classList.add("active");
   // Statut financier (barre) n'est visible que sur Accueil
-  if (tab === "accueil") tabAccueilStatus?.classList.remove("hidden");
-  else tabAccueilStatus?.classList.add("hidden");
+  if (tab === "accueil") tabAccueilStatus.classList.remove("hidden");
+  else tabAccueilStatus.classList.add("hidden");
 }
 // Nav du haut
 tabButtons.forEach((btn) => {
@@ -75,9 +75,9 @@ const paiements = [
   },
 ];
 function updatePaiementTable() {
-  const year = document.getElementById("filter-year")?.value;
-  const month = document.getElementById("filter-month")?.value;
-  const day = document.getElementById("filter-day")?.value;
+  const year = document.getElementById("filter-year").value;
+  const month = document.getElementById("filter-month").value;
+  const day = document.getElementById("filter-day").value;
   let filtered = paiements;
   if (year) filtered = filtered.filter((p) => p.date.startsWith(year));
   if (month) filtered = filtered.filter((p) => p.date.slice(5, 7) === month);
@@ -86,55 +86,46 @@ function updatePaiementTable() {
       (p) => p.date.slice(8, 10) === day.padStart(2, "0")
     );
   const tbody = document.getElementById("paiement-table-body");
-  if (!tbody) return;
   tbody.innerHTML =
     filtered
       .map(
         (p) => `
-      <tr>
-        <td>${p.date.split("-").reverse().join("/")}</td>
-        <td class="font-bold text-green-700">${p.montant.toLocaleString()} FC</td>
-        <td>${p.mode}</td>
-        <td>${p.duree}</td>
-        <td><span class="bg-green-100 text-green-700 px-2 py-1 rounded">${
-          p.statut
-        }</span></td>
-      </tr>
-    `
+          <tr>
+            <td>${p.date.split("-").reverse().join("/")}</td>
+            <td class="font-bold text-green-700">${p.montant.toLocaleString()} FC</td>
+            <td>${p.mode}</td>
+            <td>${p.duree}</td>
+            <td><span class="bg-green-100 text-green-700 px-2 py-1 rounded">${
+              p.statut
+            }</span></td>
+          </tr>
+        `
       )
       .join("") ||
     '<tr><td colspan="5" class="text-center text-gray-400">Aucun paiement trouvé</td></tr>';
 }
 // Remplir les jours dynamiquement selon le mois sélectionné
-const filterMonth = document.getElementById("filter-month");
-if (filterMonth) {
-  filterMonth.addEventListener("change", function () {
-    const month = this.value;
-    const year =
-      document.getElementById("filter-year")?.value || new Date().getFullYear();
-    const daySelect = document.getElementById("filter-day");
-    if (!daySelect) return;
-    daySelect.innerHTML = '<option value="">Jour</option>';
-    if (month) {
-      const days = new Date(year, month, 0).getDate();
-      for (let d = 1; d <= days; d++) {
-        daySelect.innerHTML += `<option value="${d
-          .toString()
-          .padStart(2, "0")}">${d}</option>`;
-      }
+document.getElementById("filter-month").addEventListener("change", function () {
+  const month = this.value;
+  const year =
+    document.getElementById("filter-year").value || new Date().getFullYear();
+  const daySelect = document.getElementById("filter-day");
+  daySelect.innerHTML = '<option value="">Jour</option>';
+  if (month) {
+    const days = new Date(year, month, 0).getDate();
+    for (let d = 1; d <= days; d++) {
+      daySelect.innerHTML += `<option value="${d
+        .toString()
+        .padStart(2, "0")}">${d}</option>`;
     }
-    updatePaiementTable();
-  });
-}
-const filterYear = document.getElementById("filter-year");
-if (filterYear) {
-  filterYear.addEventListener("change", function () {
-    document.getElementById("filter-month")?.dispatchEvent(new Event("change"));
-    updatePaiementTable();
-  });
-}
-const filterDay = document.getElementById("filter-day");
-if (filterDay) {
-  filterDay.addEventListener("change", updatePaiementTable);
-}
+  }
+  updatePaiementTable();
+});
+document.getElementById("filter-year").addEventListener("change", function () {
+  document.getElementById("filter-month").dispatchEvent(new Event("change"));
+  updatePaiementTable();
+});
+document
+  .getElementById("filter-day")
+  .addEventListener("change", updatePaiementTable);
 updatePaiementTable();
