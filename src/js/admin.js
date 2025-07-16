@@ -138,3 +138,52 @@ if (filterDay) {
   filterDay.addEventListener("change", updatePaiementTable);
 }
 updatePaiementTable();
+
+// === HÔPITAUX PARTENAIRES : cards dynamiques ===
+const hopitaux = [
+  {
+    nom: "Hôpital du Cinquantenaire",
+    adresse: "Avenue des Hôpitaux, Kinshasa",
+    contact: "+243 123 456 789",
+    specialites: "Urgences, Pédiatrie, Chirurgie",
+    image: "images/Hopital Cinquantenaire.jpeg",
+  },
+  {
+    nom: "Clinique Ngaliema",
+    adresse: "Boulevard du 30 Juin, Kinshasa",
+    contact: "+243 987 654 321",
+    specialites: "Cardiologie, Gynécologie, Imagerie",
+    image: "images/medecinfemme.jpg",
+  },
+  {
+    nom: "Centre Médical Diamant",
+    adresse: "Avenue Diamant, Gombe",
+    contact: "+243 555 666 777",
+    specialites: "Médecine générale, Laboratoire",
+    image: "images/consultation.jpg",
+  },
+  // ... Ajoute d'autres hôpitaux ici
+];
+
+function renderHopitauxCards() {
+  const container = document.getElementById("hopitaux-list");
+  if (!container) return;
+  container.innerHTML = hopitaux
+    .map(
+      (h) => `
+    <div class="bg-white rounded-xl shadow flex flex-col items-center gap-1 border border-cyan-100 hover:shadow-lg transition-shadow duration-300 w-full h-full p-[4vw] min-w-0" style="max-width:100%; min-width:0; box-sizing:border-box;">
+      <div class="w-[20vw] h-[20vw] max-w-[80px] max-h-[80px] mb-1 rounded-full overflow-hidden border-2 border-cyan-200 shadow">
+        <img src="${h.image}" alt="Logo ${h.nom}" class="object-cover w-full h-full" />
+      </div>
+      <h3 class="text-base font-bold text-cyan-800 text-center w-full break-words">${h.nom}</h3>
+      <p class="text-xs text-gray-600 text-center w-full break-words">${h.adresse}</p>
+      <p class="text-xs text-gray-500 text-center w-full break-words">${h.contact}</p>
+      <p class="text-xs text-cyan-600 text-center w-full break-words">Spécialités : ${h.specialites}</p>
+      <button class="mt-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full px-3 py-1 text-xs shadow hover:scale-105 transition-transform w-full">Voir plus</button>
+    </div>
+  `
+    )
+    .join("");
+}
+
+document.addEventListener("DOMContentLoaded", renderHopitauxCards);
